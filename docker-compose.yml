@@ -1,0 +1,31 @@
+web:
+    image: nginx:latest
+    ports:
+        - "8080:80"
+    volumes:
+        - /c/Users/de33/develop/project:/project
+        - /c/Users/de33/develop/config/nginx/site.conf:/etc/nginx/conf.d/site.conf
+        - /c/Users/de33/develop/log/nginx:/log
+    links:
+        - php
+php:
+    image: phalcon_php_unit
+    volumes:
+        - /c/Users/de33/develop/project:/var/www/html
+    links:
+        - db
+db:
+    image: mariadb:10.0
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    ports:
+        - "3306:3306"
+    volumes:
+        - /c/Users/de33/develop/config/mariaDB/data:/var/lib/mysql
+        - /c/Users/de33/develop/config/mariaDB/cnf:/etc/mysql/conf.d
+couchdb:
+    image: couchdb:latest
+    ports:
+        - "5984:5984"
+    volumes:
+        - /c/Users/de33/develop/config/couchDB/data:/usr/local/var/lib/couchdb
