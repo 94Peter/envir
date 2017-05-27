@@ -5,6 +5,7 @@ web:
     volumes:
         - ~/develop/project:/var/www/html
         - ~/develop/envir/config/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        - ~/develop/envir/config/nginx/grav-site.conf:/etc/nginx/conf.d/grav.conf
         - ~/develop/envir/log/nginx:/log
     links:
         - php
@@ -32,3 +33,4 @@ php:
         - ~/develop/project:/var/www/html
     links:
         - db
+        - couchdb
