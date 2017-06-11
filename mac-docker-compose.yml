@@ -31,6 +31,7 @@ php:
     image: phalcon_php_unit
     volumes:
         - ~/develop/project:/var/www/html
+        - ~/develop/envir/config/php/php.ini:/usr/local/etc/php/php.ini
     links:
         - db
         - couchdb
